@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping list</title>
+</head>
+<style>
+    body {
+        background: linear-gradient(45deg, red, blue);
+        background-repeat: no-repeat;
+        width: auto;
+        height: 100vh;
+    }
+
+    .incent {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 5vh;
+        color: black;
+    }
+
+    input {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 20vw;
+        height: 1vh;
+        padding: 2vh 4vh;
+        border: 3px solid darkblue;
+        border-radius: 10px;
+    }
+
+    ol li {
+        font-size: 3vh;
+    }
+
+    #centerme {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        margin: 5vh;
+    }
+
+    input:only-of-type {
+        font-size: 2vh;
+    }
+
+    .buton {
+        border: 3px solid darkblue;
+        border-radius: 10px;
+        padding: 1vh 1vh;
+        color: darkblue;
+        font-size: 3vh;
+        cursor: pointer;
+        font: bolder;
+        width: 20vw;
+    }
+
+    .Printlist {
+        border: 3px solid darkblue;
+        border-radius: 10px;
+        padding: 0.5vh 4vh;
+        color: darkblue;
+        font-size: 2vh;
+        cursor: pointer;
+    }
+
+    div {
+        display: flex;
+        flex-direction: row;
+        column-gap: 2vw;
+        justify-content: center;
+    }
+
+    li {
+        color: black;
+        font: bold;
+        font-size: 4vh;
+    }
+
+</style>
+
+<body>
+    <h1 class="incent">Shopping List</h1>
+    <div>
+        <input type="text" placeholder="Enter your item" value="" id="shopitem">
+        <button class="buton" id="button">Add</button>
+    </div>
+    <div id="centerme">
+        <ol>
+        </ol>
+    </div>
+
+    <div>
+        <button class="Printlist" onclick="printandhide()" id="printbtn">Print List</button>
+    </div>
+    <script>
+        let button = document.getElementById("button");
+        var input = document.getElementById("shopitem");
+        var ol = document.querySelector("ol");
+        const display1 = document.getElementById('shopitem');
+        const display2 = document.getElementById('button');
+        const display3 = document.getElementById('printbtn');
+        button.addEventListener("click", function () {
+            if (input.value.length > 0) {
+                var li = document.createElement("li");
+                li.appendChild(document.createTextNode(input.value));
+                ol.appendChild(li);
+                input.value = "";
+            }
+        })
+        function printandhide(){
+            display1.style.display = "none";
+            display2.style.display = "none";
+            display3.style.display = "none";
+            window.print();
+        }
+    </script>
+</body>
+
+</html>
